@@ -1,0 +1,139 @@
+/* =========================================
+   1. GLOBAL STYLING
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f6f8;
+    color: #333333;
+}
+
+
+/* =========================================
+   2. HEADER
+   ========================================= */
+
+header {
+    background-color: #172a45;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #f0c674;
+}
+
+
+/* =========================================
+   3. MAIN CONTENT
+   ========================================= */
+
+main {
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #172a45;
+}
+
+main img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+/* =========================================
+   4. ASIDE SECTION
+   ========================================= */
+
+aside {
+    width: 320px;
+    max-width: 100%;
+    margin: 20px auto;
+    border: 2px solid #172a45;
+    padding: 16px;
+    background-color: #e8eef5;
+    color: #333333;
+    border-radius: 8px;
+}
+
+aside h2 {
+    color: #172a45;
+}
+
+aside img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+
+/* =========================================
+   5. PARAGRAPHS
+   ========================================= */
+
+p {
+    padding: 0;
+}
+
+
+/* =========================================
+   6. FOOTER
+   ========================================= */
+
+footer {
+    margin-top: 30px;
+    border-top: 2px solid #172a45;
+    text-align: center;
+    padding: 15px;
+}
+
+
+/* =========================================
+   7. RESPONSIVE DESIGN
+   ========================================= */
+
+@media screen and (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    aside {
+        width: 100%;
+    }
+
+}
