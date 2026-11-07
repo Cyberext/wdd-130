@@ -101,7 +101,33 @@ p {
 
 
 /* =========================================
-   6. FOOTER
+   6. CHECKLIST TABLE
+   ========================================= */
+
+.checklist {
+    max-width: 840px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.checklist h2 {
+    color: #172a45;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th {
+    background-color: #172a45;
+    color: white;
+}
+
+
+/* =========================================
+   7. FOOTER
    ========================================= */
 
 footer {
@@ -113,7 +139,7 @@ footer {
 
 
 /* =========================================
-   7. RESPONSIVE DESIGN
+   8. RESPONSIVE DESIGN
    ========================================= */
 
 @media screen and (max-width: 600px) {
