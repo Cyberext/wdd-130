@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,22 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | White Water Rafting</title>
-    <meta name="description" content="Discover White Water Rafting, our history, mission, and passion for unforgettable river adventures.">
+
+    <!-- Meta Description & SEO -->
+    <meta name="description"
+        content="Discover White Water Rafting: our history, dedicated guides, safety commitment, and breathtaking river expeditions across the wildest waters.">
+    <meta name="author" content="Rogen Tonderai Bharani">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://example.com/about.html">
+
+    <!-- Open Graph Protocol -->
     <meta property="og:title" content="About Us | White Water Rafting">
-    <meta property="og:description" content="Learn about our history, mission, and unforgettable white water rafting experiences.">
-    <meta property="og:image" content="https://example.com/images/rafting-hero.jpg">
+    <meta property="og:description"
+        content="Learn about our history, mission, and unforgettable white water rafting adventures.">
+    <meta property="og:image" content="images/rafting-hero.jpg">
     <meta property="og:type" content="website">
-    <link rel="stylesheet" href="styles/rafting.css" media="all" onload="this.onload=null;this.rel='stylesheet'">
-    <!-- JSON‑LD Structured Data -->
+
+    <!-- Google Fonts: Inter & Newsreader for minimalist editorial style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/rafting.css">
+
+    <!-- JSON-LD Structured Data for Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "SportsActivityLocation",
       "name": "White Water Rafting",
-      "url": "https://example.com",
-      "logo": "https://example.com/images/logo.png",
+      "description": "Professional white water rafting expeditions and guided river adventures.",
+      "image": "images/rafting-hero.jpg",
+      "logo": "images/logo.png",
       "sameAs": [
         "https://www.facebook.com/",
         "https://www.instagram.com/",
@@ -29,134 +43,225 @@
       ]
     }
     </script>
-    <!-- End JSON‑LD -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>About Us | White Water Rafting</title>
-
-    <meta name="description"
-        content="Discover White Water Rafting, our history, mission, and passion for unforgettable river adventures.">
-
-    <meta name="author" content="Rogen Tonderai Bharani">
-
-    <link rel="stylesheet" href="styles/rafting.css">
 </head>
 
 <body>
-    <a href="#main" class="skip-link">Skip to main content</a>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- HEADER: Company logo and primary navigation -->
-    <header>
+    <!-- ==================== HEADER ==================== -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo-link" aria-label="White Water Rafting Home">
+                <img src="images/logo.png" alt="White Water Rafting Company Logo" class="site-logo" width="160" height="60">
+            </a>
 
-        <img
-            src="images/logo.png"
-            alt="White Water Rafting company logo"
-        >
-
-        <nav aria-label="Main navigation">
-            <a href="index.html">Home</a>
-            <a href="about.html" aria-current="page">About Us</a>
-            <a href="trips.html">Trips</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-
+            <nav class="main-nav" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active" aria-current="page">About Us</a>
+                <a href="trips.html" class="nav-link">Trips</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- MAIN: Primary page content -->
-    <main>
+    <!-- ==================== MAIN ==================== -->
+    <main id="main-content" class="site-main">
 
-        <!-- HERO: Main image, heading, and mission article -->
+        <!-- HERO SECTION -->
         <div class="hero">
+            <img src="images/rafting-hero.jpg"
+                alt="A skilled crew of rafters navigating churning white water rapids"
+                class="hero-img"
+                loading="eager">
 
-            <img
-                src="images/rafting-hero.jpg"
-                alt="A team of rafters navigating powerful white water rapids"
-            >
+            <div class="hero-overlay"></div>
 
-            <h1>White Water Rafting</h1>
+            <div class="hero-content">
+                <span class="hero-tag">EST. 2012 &bull; IDAHO &amp; BEYOND</span>
+                <h1>White Water Rafting</h1>
+            </div>
 
-            <article>
-
-                <img
-                    src="images/happy-clients.jpg"
-                    alt="Happy rafting clients enjoying their river adventure"
-                >
-
-                <p>
-                    Our mission is to create unforgettable white water
-                    rafting experiences while maintaining the highest
-                    standards of safety, teamwork, and customer service.
-                    We believe every river adventure should inspire
-                    confidence, excitement, and lasting memories.
-                </p>
-
+            <!-- MISSION ARTICLE OVERLAY / CARD -->
+            <article class="hero-article">
+                <img src="images/happy-clients.jpg"
+                    alt="Smiling rafters celebrating a safe and exhilarating river run"
+                    class="mission-img">
+                <div class="mission-content">
+                    <span class="eyebrow">Our Core Mission</span>
+                    <p>
+                        We create unforgettable white water rafting journeys grounded in the highest standards of safety, teamwork, and wilderness stewardship. Every rapid inspires resilience, joy, and lifelong memories.
+                    </p>
+                </div>
             </article>
-
         </div>
 
         <!-- HISTORY SECTION -->
-        <section>
+        <section class="history-section">
+            <div class="section-badge">Our Heritage</div>
+            <div class="history-grid">
+                <div class="history-text">
+                    <h2>History</h2>
+                    <p class="lead-paragraph">
+                        What began in the summer of 2012 as a handful of passionate river guides with two rafts and an unyielding thirst for wilderness has grown into one of the country's most respected rafting outfitters.
+                    </p>
+                    <p>
+                        Our founders spent decades charting hidden canyons, learning hydraulic patterns, and mastering high-volume river navigation. As our family grew, so did our commitment to making world-class river exploration accessible to everyone—from families experiencing their very first float to thrill-seekers tackling Class V hydraulic drops.
+                    </p>
+                    <p>
+                        Today, our certified guides carry that exact same founding spirit onto every river: uncompromising river safety, environmental leave-no-trace ethics, and genuine care for every guest who steps into our boats.
+                    </p>
+                </div>
+                <div class="history-media">
+                    <figure class="media-card">
+                        <img src="images/hero-rapids.jpg"
+                            alt="Guides maneuvering through a powerful standing river wave"
+                            loading="lazy">
+                        <figcaption>
+                            <strong>Pioneering the Roaring Rapids</strong>
+                            <span>Early expedition run along the Middle Fork River canyon.</span>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
 
-            <h2>History</h2>
-
-            <p>
-                Our company was founded through a passion for river
-                exploration and outdoor adventure. What began as a
-                small group of adventure enthusiasts developed into
-                a rafting company dedicated to sharing the excitement
-                of white water rafting. Our commitment to professional
-                guidance, customer safety, and memorable experiences
-                continues to define who we are.
-            </p>
-
+        <!-- STATS / VALUES STRIP -->
+        <section class="values-strip" aria-label="Company Highlights">
+            <div class="value-item">
+                <span class="value-num">14+</span>
+                <span class="value-label">Years on the River</span>
+            </div>
+            <div class="value-item">
+                <span class="value-num">100%</span>
+                <span class="value-label">Certified River Guides</span>
+            </div>
+            <div class="value-item">
+                <span class="value-num">25k+</span>
+                <span class="value-label">Happy Adventurers</span>
+            </div>
+            <div class="value-item">
+                <span class="value-num">0</span>
+                <span class="value-label">Compromise on Safety</span>
+            </div>
         </section>
 
         <!-- ADVENTURE SECTION -->
-        <section>
+        <section class="adventure-section">
+            <div class="adventure-header">
+                <span class="section-badge">Expeditions &amp; Discovery</span>
+                <h2>Adventure Awaits You!</h2>
+                <p class="section-subtext">
+                    From tranquil alpine canyon drifts to heart-racing rapids, explore our signature river adventures tailored for every level of rafter.
+                </p>
+            </div>
 
-            <h2>Adventure Awaits You!</h2>
+            <!-- ADVENTURE GALLERY GRID -->
+            <div class="adventure-grid">
+                <!-- Card 1 -->
+                <figure class="adventure-card">
+                    <div class="card-img-wrap">
+                        <img src="images/The Wildest Rivers for Whitewater Rafting - World Rivers.jpg"
+                            alt="Sweeping panoramic canyon view of the wildest whitewater rivers in the world"
+                            loading="lazy">
+                        <span class="card-tag">Wilderness Classic</span>
+                    </div>
+                    <figcaption class="card-caption">
+                        <h3>Untamed Wilderness Expeditions</h3>
+                        <p>Multi-day scenic journeys through deep granite gorges, sandy riverside campsites, and starry night skies.</p>
+                    </figcaption>
+                </figure>
 
+                <!-- Card 2 -->
+                <figure class="adventure-card">
+                    <div class="card-img-wrap">
+                        <img src="images/hero-rapids.jpg"
+                            alt="Raft cutting through torrential Class V rapids"
+                            loading="lazy">
+                        <span class="card-tag">High Adrenaline</span>
+                    </div>
+                    <figcaption class="card-caption">
+                        <h3>Class IV &amp; V Roaring Rapids</h3>
+                        <p>Test your grit against thunderous drops, boiling eddies, and pulse-pounding white water surges.</p>
+                    </figcaption>
+                </figure>
+
+                <!-- Card 3 -->
+                <figure class="adventure-card">
+                    <div class="card-img-wrap">
+                        <img src="images/rafting-hero.jpg"
+                            alt="Unified rafting team paddling synchronously through whitewater"
+                            loading="lazy">
+                        <span class="card-tag">Team Expeditions</span>
+                    </div>
+                    <figcaption class="card-caption">
+                        <h3>Team &amp; Corporate Challenges</h3>
+                        <p>Forge unshakeable trust and communication while conquering turbulent technical river lines together.</p>
+                    </figcaption>
+                </figure>
+
+                <!-- Card 4 -->
+                <figure class="adventure-card">
+                    <div class="card-img-wrap">
+                        <img src="images/happy-clients.jpg"
+                            alt="Group of laughing guests in safety helmets and life vests"
+                            loading="lazy">
+                        <span class="card-tag">Family &amp; Beginner Friendly</span>
+                    </div>
+                    <figcaption class="card-caption">
+                        <h3>Scenic Family Floats</h3>
+                        <p>Accessible, confidence-building river trips packed with swimming holes, wildlife sightings, and splash-filled fun.</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- MINIMALIST CALL TO ACTION -->
+        <section class="cta-section">
+            <div class="cta-box">
+                <h2>Ready to Answer the Call of the River?</h2>
+                <p>Reserve your spot on upcoming seasonal departures or talk with our seasoned guides to customize your dream river trip.</p>
+                <div class="cta-actions">
+                    <a href="trips.html" class="btn btn-primary">Explore All Trips</a>
+                    <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
         </section>
 
     </main>
 
-    <!-- FOOTER: Copyright and social media links -->
-    <footer>
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo-link">
+                    <img src="images/logo.png" alt="White Water Rafting" width="130" height="48">
+                </a>
+                <p class="tagline">Life is either a daring adventure or nothing at all.</p>
+            </div>
 
-        <p>
-            &copy; 2026 White Water Rafting
-            &ndash; Rogen Tonderai Bharani
-        </p>
+            <div class="footer-meta">
+                <p class="copyright">
+                    &copy; 2026 White Water Rafting &bull; Rogen Tonderai Bharani &bull; WDD 130
+                </p>
+                <p class="wireframe-note">
+                    <a href="https://byui-wdd.github.io/wdd130/rafting/about.html" target="_blank" rel="noopener">Course Project Reference</a>
+                </p>
+            </div>
 
-        <nav class="socialmedia" aria-label="Social media">
-
-            <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <img src="images/facebook.svg" alt="Facebook">
-            </a>
-
-            <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <img src="images/instagram.svg" alt="Instagram">
-            </a>
-
-            <a
-                href="https://www.youtube.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <img src="images/youtube.svg" alt="YouTube">
-            </a>
-
-        </nav>
-
+            <!-- SOCIAL MEDIA WITH CUSTOM MINIMALIST SVGs -->
+            <nav class="socialmedia" aria-label="Social media channels">
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                    <img src="images/facebook.svg" alt="Facebook icon" width="22" height="22">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                    <img src="images/instagram.svg" alt="Instagram icon" width="22" height="22">
+                </a>
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow our YouTube Channel">
+                    <img src="images/youtube.svg" alt="YouTube icon" width="22" height="22">
+                </a>
+            </nav>
+        </div>
     </footer>
 
 </body>
