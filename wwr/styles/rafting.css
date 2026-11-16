@@ -1,0 +1,403 @@
+
+/* ==========================================================
+   WHITE WATER RAFTING
+   About Us Page
+   Author: Rogen Tonderai Bharani
+   File: wwr/styles/rafting.css
+   ========================================================== */
+
+
+/* 1. CSS VARIABLES
+   Centralized design system
+========================================================== */
+
+:root {
+    --primary-color: #1B4965;
+    --secondary-color: #62B6CB;
+    --accent1-color: #CAE9FF;
+    --accent2-color: #F4A261;
+
+    --text-color: #243746;
+    --muted-color: #64748B;
+    --white: #FFFFFF;
+    --light-background: #F5F9FC;
+
+    --heading-font: Georgia, "Times New Roman", serif;
+    --body-font: Arial, Helvetica, sans-serif;
+
+    --content-width: 840px;
+
+    --small-radius: 6px;
+    --medium-radius: 12px;
+
+    --soft-shadow: 0 4px 16px rgba(27, 73, 101, 0.12);
+}
+
+
+/* 2. UNIVERSAL RESET
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* 3. BODY
+========================================================== */
+
+body {
+    font-family: var(--body-font);
+    color: var(--text-color);
+    background-color: var(--white);
+    line-height: 1.7;
+}
+
+
+/* 4. MAIN PAGE CONTAINER
+========================================================== */
+
+header,
+main,
+footer {
+    width: 840px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+
+/* 5. TYPOGRAPHY
+========================================================== */
+
+h1,
+h2 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+}
+
+p {
+    color: var(--text-color);
+}
+
+
+/* 6. SHARED SPACING
+   Required assignment selector
+========================================================== */
+
+nav,
+p,
+section,
+article {
+    margin: 16px;
+    padding: 8px;
+}
+
+
+/* 7. HEADER
+========================================================== */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #E5EDF2;
+}
+
+header img {
+    display: block;
+    width: auto;
+    height: 65px;
+    object-fit: contain;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease,
+                border-color 0.2s ease;
+}
+
+header nav a:hover,
+header nav a[aria-current="page"] {
+    color: var(--primary-color);
+    border-bottom-color: var(--secondary-color);
+}
+
+header nav a:focus-visible,
+.socialmedia a:focus-visible {
+    outline: 3px solid var(--accent2-color);
+    outline-offset: 4px;
+}
+
+
+/* 8. HERO SECTION
+========================================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    border-radius: var(--medium-radius);
+    background-color: var(--primary-color);
+}
+
+.hero > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Main heading overlay */
+
+.hero h1 {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    width: 100%;
+    padding: 18px 12px;
+    text-align: center;
+    color: var(--white);
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+    background-color: rgba(18, 48, 63, 0.78);
+}
+
+
+/* 9. MISSION ARTICLE
+========================================================== */
+
+.hero article {
+    position: absolute;
+    top: 145px;
+    right: 24px;
+    width: 58%;
+    margin: 0;
+    padding: 16px;
+
+    background-color: rgba(255, 255, 255, 0.95);
+    border-left: 4px solid var(--secondary-color);
+    border-radius: var(--small-radius);
+
+    box-shadow: var(--soft-shadow);
+}
+
+.hero article p {
+    margin: 0;
+    padding: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* Mission image */
+
+.hero article img {
+    float: right;
+    width: 125px;
+    height: auto;
+    margin: 0 0 8px 14px;
+    border-radius: var(--small-radius);
+}
+
+
+/* 10. HISTORY AND ADVENTURE SECTIONS
+========================================================== */
+
+main section {
+    margin-top: 32px;
+    padding: 24px;
+    border-radius: var(--medium-radius);
+}
+
+main section:first-of-type {
+    background-color: var(--light-background);
+}
+
+main section:first-of-type p {
+    margin: 0;
+    padding: 0;
+}
+
+main section:last-of-type {
+    min-height: 140px;
+    background-color: var(--accent1-color);
+    border-left: 4px solid var(--secondary-color);
+}
+
+
+/* 11. FOOTER
+========================================================== */
+
+footer {
+    margin-top: 40px;
+    padding: 20px 12px;
+    text-align: center;
+    border-top: 1px solid #DCE7ED;
+}
+
+footer p {
+    margin: 8px;
+    padding: 4px;
+    color: var(--muted-color);
+    font-size: 0.85rem;
+}
+
+
+/* 12. SOCIAL MEDIA
+========================================================== */
+
+.socialmedia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin: 12px 0 0;
+    padding: 8px;
+}
+
+.socialmedia a {
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.socialmedia a:hover {
+    transform: translateY(-3px);
+}
+
+.socialmedia img {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+
+/* 13. TABLET RESPONSIVENESS
+========================================================== */
+
+@media (max-width: 700px) {
+
+    header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    header nav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero h1 {
+        top: 16px;
+        font-size: 1.8rem;
+    }
+
+    .hero article {
+        top: 100px;
+        right: 16px;
+        width: 65%;
+    }
+
+}
+
+
+/* 14. MOBILE RESPONSIVENESS
+========================================================== */
+
+@media (max-width: 600px) {
+
+    header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    header nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    header nav a {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    .hero {
+        overflow: visible;
+        border-radius: 0;
+    }
+
+    .hero h1 {
+        top: 10px;
+        padding: 10px;
+        font-size: 1.35rem;
+    }
+
+    /* Article moves below the hero image */
+
+    .hero article {
+        position: static;
+        width: auto;
+        margin: 0;
+        border-left: none;
+        border-radius: 0;
+        background-color: var(--light-background);
+        box-shadow: none;
+    }
+
+    main section {
+        margin: 20px 12px;
+        padding: 18px;
+    }
+
+    main section:last-of-type {
+        min-height: 110px;
+    }
+
+    footer {
+        margin-top: 24px;
+    }
+
+}
+
+
+/* 15. REDUCED MOTION ACCESSIBILITY
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+}
