@@ -1,935 +1,403 @@
 /* ==========================================================================
-   WHITE WATER RAFTING
-   Minimalist & Professional Design System
-   Course: WDD 130 | Web Fundamentals
+   White Water Rafting | BYU-Idaho WDD 130 W04
    Author: Rogen Tonderai Bharani
    File: styles/rafting.css
+   Purpose: About Us Page Revamp (CSS Grid, Flexbox, Accessible Responsive UI)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. DESIGN TOKENS & CSS VARIABLES
+   1. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
    -------------------------------------------------------------------------- */
 :root {
-    /* Brand Palette - Minimalist River & Earth Tones */
-    --primary-color: #0E2A38;       /* Deep River Abyss */
-    --primary-dark: #071922;        /* Midnight Blue */
-    --secondary-color: #2A6F97;     /* Alpine River Current */
-    --accent-light: #EBF4F6;        /* Glacial Mist */
-    --accent-warm: #E07A5F;         /* Canyon Terracotta */
-    --accent-warm-hover: #CC654A;
+    /* Brand color palette */
+    --primary-color: #1B4965;     /* Deep river navy (9.60:1 contrast on white) */
+    --secondary-color: #62B6CB;   /* Cyan highlight for borders & active states */
+    --accent1-color: #CAE9FF;     /* Ice blue tint for card borders & dividers */
+    --accent2-color: #F4A261;     /* Warm amber for focus & active indicator */
 
-    /* Neutrals & Surfaces */
-    --canvas-bg: #F8FAFC;           /* Minimalist Soft White */
-    --card-bg: #FFFFFF;
-    --card-surface-subtle: #F1F5F9;
-    --border-color: rgba(14, 42, 56, 0.08);
-    --border-hover: rgba(14, 42, 56, 0.18);
+    /* Neutral tones */
+    --text-color: #243746;        /* High-contrast body text (12.28:1 on white) */
+    --background-color: #FFFFFF;  /* Crisp canvas */
+    --surface-color: #F5F9FC;     /* Subtle cool surface for cards & footer */
 
-    /* Typography Colors */
-    --text-primary: #1E293B;        /* Slate Charcoal */
-    --text-secondary: #576877;      /* River Slate */
-    --text-muted: #8494A5;
-    --text-inverse: #FFFFFF;
+    /* Typography */
+    --heading-font: Georgia, "Times New Roman", serif;
+    --body-font: Arial, Helvetica, sans-serif;
 
-    /* Font Families */
-    --font-heading: 'Newsreader', Georgia, 'Times New Roman', serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-    /* Layout Dimensions */
-    --site-max-width: 1040px;
-    --site-gutter: 24px;
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-full: 9999px;
-
-    /* Subtle Modern Shadows */
-    --shadow-subtle: 0 1px 3px rgba(14, 42, 56, 0.04), 0 6px 16px -2px rgba(14, 42, 56, 0.05);
-    --shadow-elevated: 0 4px 6px -1px rgba(14, 42, 56, 0.05), 0 16px 32px -4px rgba(14, 42, 56, 0.10);
-    --shadow-float: 0 20px 40px -10px rgba(14, 42, 56, 0.22);
-
-    /* Smooth Transitions */
-    --transition-fast: 0.18s ease;
-    --transition-base: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Layout metrics */
+    --page-width: 840px;          /* BYU-Idaho course wireframe standard (~840px) */
 }
 
 /* --------------------------------------------------------------------------
-   2. MODERN CSS RESET & ACCESSIBILITY
+   2. UNIVERSAL RESET & BASE DEFAULTS
    -------------------------------------------------------------------------- */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+p,
+figure {
     margin: 0;
-    padding: 0;
 }
 
-html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-}
-
-body {
-    min-height: 100vh;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--text-primary);
-    background-color: var(--canvas-bg);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-img,
-picture,
-svg {
+img {
     display: block;
     max-width: 100%;
     height: auto;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-    transition: color var(--transition-fast);
-}
-
-/* Skip Link for Keyboard Accessibility */
-.skip-link {
-    position: absolute;
-    top: -100px;
-    left: 24px;
-    z-index: 1000;
-    background: var(--primary-color);
-    color: var(--text-inverse);
-    padding: 10px 18px;
-    border-radius: var(--radius-sm);
-    font-weight: 600;
-    font-size: 0.88rem;
-    box-shadow: var(--shadow-elevated);
-    transition: top 0.2s ease;
-}
-
-.skip-link:focus {
-    top: 16px;
-}
-
-:focus-visible {
-    outline: 2px solid var(--accent-warm);
-    outline-offset: 3px;
-}
-
 /* --------------------------------------------------------------------------
-   3. TYPOGRAPHY & SHARED UTILITIES
+   3. BODY TYPOGRAPHY
    -------------------------------------------------------------------------- */
+body {
+    font-family: var(--body-font);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
 h1,
-h2,
-h3 {
-    font-family: var(--font-heading);
+h2 {
+    font-family: var(--heading-font);
     color: var(--primary-color);
     line-height: 1.25;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-}
-
-h1 {
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
 }
 
 h2 {
-    font-size: clamp(1.75rem, 3.5vw, 2.4rem);
-}
-
-h3 {
-    font-size: 1.25rem;
-}
-
-p {
-    color: var(--text-secondary);
-    font-size: 0.96rem;
-    line-height: 1.75;
-}
-
-.section-badge {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--secondary-color);
-    background-color: var(--accent-light);
-    padding: 4px 12px;
-    border-radius: var(--radius-full);
-    margin-bottom: 12px;
+    font-size: 1.75rem;
 }
 
 /* --------------------------------------------------------------------------
-   4. SITE HEADER & NAVIGATION
+   4. SHARED PAGE WIDTH (~840px, CENTERED)
    -------------------------------------------------------------------------- */
-.site-header {
-    background-color: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 90;
-    transition: all var(--transition-fast);
-}
-
-.header-inner {
-    max-width: var(--site-max-width);
+header,
+main,
+footer {
+    width: 100%;
+    max-width: var(--page-width);
     margin: 0 auto;
-    padding: 14px var(--site-gutter);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-}
-
-.logo-link {
-    display: flex;
-    align-items: center;
-}
-
-.site-logo {
-    height: 52px;
-    width: auto;
-    object-fit: contain;
-    transition: transform var(--transition-fast);
-}
-
-.logo-link:hover .site-logo {
-    transform: scale(1.02);
-}
-
-.main-nav {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.nav-link {
-    font-size: 0.92rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    padding: 8px 14px;
-    border-radius: var(--radius-sm);
-    position: relative;
-    transition: all var(--transition-fast);
-}
-
-.nav-link:hover {
-    color: var(--primary-color);
-    background-color: var(--card-surface-subtle);
-}
-
-.nav-link.active,
-.nav-link[aria-current="page"] {
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-.nav-link.active::after,
-.nav-link[aria-current="page"]::after {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    left: 14px;
-    right: 14px;
-    height: 2px;
-    background-color: var(--secondary-color);
-    border-radius: 2px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 /* --------------------------------------------------------------------------
-   5. MAIN CONTAINER
+   5. HEADER (CRITERION 2: CSS GRID LOGO & NAVIGATION)
    -------------------------------------------------------------------------- */
-.site-main {
-    max-width: var(--site-max-width);
-    margin: 0 auto;
-    padding: 28px var(--site-gutter) 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
+header {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+    gap: 20px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+header img {
+    max-width: 150px;
+    height: auto;
 }
 
 /* --------------------------------------------------------------------------
-   6. HERO SECTION
+   6. NAVIGATION (CRITERION 3: CSS FLEXBOX HORIZONTAL LINKS)
    -------------------------------------------------------------------------- */
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+}
+
+header nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 4px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+header nav a:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--secondary-color);
+}
+
+header nav a.active {
+    border-bottom-color: var(--accent2-color);
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO IMAGE AND OVERLAY POSITIONING (WEEK 03 CONCEPTS)
+   -------------------------------------------------------------------------- */
+main {
+    padding-top: 24px;
+    padding-bottom: 36px;
+}
+
 .hero {
     position: relative;
-    width: 100%;
-    min-height: 480px;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
     background-color: var(--primary-color);
-    box-shadow: var(--shadow-subtle);
-    display: flex;
-    align-items: flex-end;
+    overflow: hidden;
 }
 
-.hero-img,
 .hero > img {
-    position: absolute;
-    inset: 0;
     width: 100%;
-    height: 100%;
+    height: 350px;
     object-fit: cover;
-    object-position: center 38%;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero:hover .hero-img,
-.hero:hover > img {
-    transform: scale(1.025);
-}
-
-/* Minimalist Dark Gradient Overlay */
-.hero-overlay {
+.hero h1 {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(14, 42, 56, 0.25) 0%,
-        rgba(14, 42, 56, 0.45) 50%,
-        rgba(14, 42, 56, 0.82) 100%
-    );
-    pointer-events: none;
+    top: 20px;
+    left: 20px;
+    margin: 0;
+    padding: 8px 18px;
+    font-size: 2rem;
+    color: #FFFFFF;
+    background-color: var(--primary-color);
+    letter-spacing: 0.5px;
 }
 
-/* Hero Content & Heading */
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 40px;
-    max-width: 540px;
-}
-
-.hero-tag {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    color: var(--accent-light);
-    margin-bottom: 8px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-}
-
-.hero h1,
-.hero-content h1 {
-    color: var(--text-inverse);
-    margin-bottom: 0;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
-}
-
-/* Floating Mission Article */
-.hero-article,
+/* --------------------------------------------------------------------------
+   8. MISSION ARTICLE (WEEK 03 DESCENDANT SELECTORS & FLOAT: RIGHT)
+   -------------------------------------------------------------------------- */
 .hero article {
     position: absolute;
-    top: 36px;
-    right: 36px;
-    z-index: 3;
-    max-width: 380px;
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: var(--radius-md);
-    padding: 20px;
-    box-shadow: var(--shadow-float);
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    padding: 14px 16px;
+    background-color: rgba(255, 255, 255, 0.94);
+    border: 1px solid var(--accent1-color);
+    box-shadow: 0 4px 12px rgba(36, 55, 70, 0.2);
 }
 
-.hero-article:hover,
-.hero article:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 24px 48px -8px rgba(14, 42, 56, 0.28);
-}
-
-.mission-img,
 .hero article img {
-    width: 80px;
-    height: 80px;
-    border-radius: var(--radius-sm);
+    float: right;
+    width: 85px;
+    height: 85px;
     object-fit: cover;
-    flex-shrink: 0;
-    border: 1px solid var(--border-color);
+    margin-left: 12px;
+    margin-bottom: 6px;
+    border: 1px solid var(--accent1-color);
 }
 
-.mission-content {
-    flex: 1;
-}
-
-.mission-content .eyebrow {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--secondary-color);
-    margin-bottom: 4px;
-}
-
-.mission-content p,
 .hero article p {
-    font-size: 0.86rem;
-    line-height: 1.55;
-    color: var(--text-primary);
-    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--text-color);
 }
 
-/* ----------------------------------------------------------
-   7. HISTORY SECTION
-   ---------------------------------------------------------- */
-.history-section {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 44px;
-    box-shadow: var(--shadow-subtle);
+/* --------------------------------------------------------------------------
+   9. HISTORY SECTION (CRITERION 4: CSS GRID THREE-COLUMN PRESENTATION)
+   -------------------------------------------------------------------------- */
+.history {
+    margin-top: 44px;
+}
+
+.history h2 {
+    text-align: center;
+    margin-bottom: 22px;
 }
 
 .history-grid {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 22px;
     align-items: center;
-    margin-top: 12px;
 }
 
-.history-text h2 {
-    margin-bottom: 18px;
-}
-
-.history-text p {
-    margin-bottom: 16px;
-}
-
-.history-text p:last-child {
-    margin-bottom: 0;
-}
-
-.history-text .lead-paragraph {
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    font-weight: 450;
-    line-height: 1.7;
-}
-
-/* Framed Media Card */
-.media-card {
-    background-color: var(--card-surface-subtle);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.media-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-elevated);
-}
-
-.media-card img {
-    width: 100%;
-    height: 270px;
-    object-fit: cover;
-}
-
-.media-card figcaption {
-    padding: 16px 20px;
-}
-
-.media-card figcaption strong {
-    display: block;
-    font-size: 0.92rem;
-    color: var(--primary-color);
-    margin-bottom: 4px;
-}
-
-.media-card figcaption span {
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    display: block;
-}
-
-/* ----------------------------------------------------------
-   8. STATS & VALUES STRIP
-   ---------------------------------------------------------- */
-.values-strip {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    background-color: var(--primary-color);
-    color: var(--text-inverse);
-    border-radius: var(--radius-md);
-    padding: 32px 28px;
-    box-shadow: var(--shadow-subtle);
-}
-
-.value-item {
-    text-align: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.value-item:last-child {
-    border-right: none;
-}
-
-.value-num {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: var(--accent-light);
-    line-height: 1.1;
-    margin-bottom: 6px;
-}
-
-.value-label {
-    display: block;
-    font-size: 0.82rem;
-    color: rgba(235, 244, 246, 0.82);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 500;
-}
-
-/* ----------------------------------------------------------
-   9. ADVENTURE SECTION & PHOTO GALLERY
-   ---------------------------------------------------------- */
-.adventure-section {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-}
-
-.adventure-header {
-    text-align: center;
-    max-width: 620px;
-    margin: 0 auto;
-}
-
-.adventure-header h2 {
-    margin-bottom: 10px;
-}
-
-.section-subtext {
-    font-size: 1rem;
-    color: var(--text-secondary);
-}
-
-/* 4-Card Responsive Grid */
-.adventure-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-}
-
-.adventure-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    box-shadow: var(--shadow-subtle);
-    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-fast);
-}
-
-.adventure-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-elevated);
-    border-color: var(--border-hover);
-}
-
-.card-img-wrap {
-    position: relative;
-    width: 100%;
-    height: 220px;
-    overflow: hidden;
-    background-color: var(--primary-color);
-}
-
-.card-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.adventure-card:hover .card-img-wrap img {
-    transform: scale(1.05);
-}
-
-.card-tag {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(14, 42, 56, 0.84);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    color: var(--text-inverse);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    padding: 4px 10px;
-    border-radius: var(--radius-full);
-}
-
-.card-caption {
-    padding: 22px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.card-caption h3 {
-    margin-bottom: 8px;
-    color: var(--primary-color);
-}
-
-.card-caption p {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
+.history-grid p {
+    font-size: 0.95rem;
     line-height: 1.6;
-    margin: 0;
 }
 
-/* ----------------------------------------------------------
-   10. MINIMALIST CALL TO ACTION
-   ---------------------------------------------------------- */
-.cta-section {
+.history-grid img {
     width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 1px solid var(--accent1-color);
 }
 
-.cta-box {
-    background: linear-gradient(135deg, var(--accent-light) 0%, #FFFFFF 100%);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 48px 36px;
+/* --------------------------------------------------------------------------
+   10. ADVENTURE GALLERY (CRITERION 4: FIVE FIGURES IN A ROW)
+   -------------------------------------------------------------------------- */
+.adventures {
+    margin-top: 48px;
+}
+
+.adventures h2 {
     text-align: center;
-    box-shadow: var(--shadow-subtle);
-    max-width: 760px;
-    margin: 0 auto;
+    margin-bottom: 22px;
 }
 
-.cta-box h2 {
-    margin-bottom: 12px;
-}
-
-.cta-box p {
-    max-width: 540px;
-    margin: 0 auto 24px;
-    font-size: 0.98rem;
-}
-
-.cta-actions {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-
-/* Minimalist Button System */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 11px 24px;
-    font-size: 0.92rem;
-    font-weight: 600;
-    border-radius: var(--radius-full);
-    transition: all var(--transition-fast);
-    cursor: pointer;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: var(--text-inverse);
-    border: 1px solid transparent;
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(14, 42, 56, 0.2);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--primary-color);
-    border: 1px solid var(--secondary-color);
-}
-
-.btn-secondary:hover {
-    background-color: var(--card-bg);
-    color: var(--secondary-color);
-    transform: translateY(-2px);
-}
-
-/* ----------------------------------------------------------
-   11. FOOTER & VECTOR SOCIAL MEDIA
-   ---------------------------------------------------------- */
-.site-footer {
-    background-color: var(--card-bg);
-    border-top: 1px solid var(--border-color);
-    padding: 40px var(--site-gutter) 32px;
-}
-
-.footer-inner {
-    max-width: var(--site-max-width);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
-}
-
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.footer-logo-link img {
-    height: 42px;
-    width: auto;
-    object-fit: contain;
-}
-
-.tagline {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    font-style: italic;
-    margin: 0;
-}
-
-.footer-meta {
-    text-align: center;
-}
-
-.copyright {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 4px;
-}
-
-.wireframe-note a {
-    font-size: 0.78rem;
-    color: var(--secondary-color);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-
-.wireframe-note a:hover {
-    color: var(--primary-color);
-}
-
-/* Social Media SVG Icons & Hover Effects */
-.socialmedia {
-    display: flex;
-    align-items: center;
+.adventure-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 12px;
 }
 
-.socialmedia a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: var(--card-surface-subtle);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-full);
-    transition: all var(--transition-fast);
+.adventure-gallery figure {
+    background-color: var(--surface-color);
+    border: 1px solid var(--accent1-color);
+    overflow: hidden;
 }
 
-.socialmedia a:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(14, 42, 56, 0.18);
+.adventure-gallery img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.adventure-gallery figcaption {
+    padding: 8px 6px;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    background-color: var(--surface-color);
+}
+
+/* --------------------------------------------------------------------------
+   11. FOOTER AND SOCIAL MEDIA LINKS (CRITERION 5: FLEXBOX RIGHT-ALIGNED)
+   -------------------------------------------------------------------------- */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: var(--surface-color);
+    border-top: 3px solid var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+footer p {
+    color: var(--text-color);
+}
+
+.socialmedia {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.socialmedia a {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 0;
 }
 
 .socialmedia img {
-    width: 20px;
-    height: 20px;
-    transition: filter var(--transition-fast);
-}
-
-/* Turn dark SVG icon into white on hover */
-.socialmedia a:hover img {
-    filter: brightness(0) invert(1);
+    width: 28px;
+    height: 28px;
 }
 
 /* --------------------------------------------------------------------------
-   12. RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
+   12. RESPONSIVE MEDIA QUERIES
    -------------------------------------------------------------------------- */
-
-/* Tablet (Max 920px) */
-@media (max-width: 920px) {
-    .site-main {
-        gap: 44px;
-        padding-bottom: 48px;
-    }
-
-    .hero {
-        min-height: 420px;
-    }
-
-    .hero-article,
-    .hero article {
-        top: 24px;
-        right: 24px;
-        max-width: 320px;
-        padding: 16px;
-    }
-
+/* Tablet Breakpoint (768px and below) */
+@media (max-width: 768px) {
     .history-grid {
         grid-template-columns: 1fr;
-        gap: 28px;
-    }
-
-    .media-card img {
-        height: 240px;
-    }
-
-    .values-strip {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-    }
-
-    .value-item:nth-child(2) {
-        border-right: none;
-    }
-}
-
-/* Mobile Devices (Max 680px) */
-@media (max-width: 680px) {
-    .header-inner {
-        flex-direction: column;
-        gap: 14px;
-        padding: 14px var(--site-gutter);
-    }
-
-    .main-nav {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 4px;
-    }
-
-    .nav-link {
-        padding: 6px 10px;
-        font-size: 0.88rem;
-    }
-
-    .site-main {
-        gap: 36px;
-        padding-top: 16px;
-    }
-
-    .hero {
-        min-height: auto;
-        flex-direction: column;
-        border-radius: var(--radius-md);
-    }
-
-    .hero-img,
-    .hero > img {
-        position: relative;
-        height: 240px;
-    }
-
-    .hero-overlay {
-        height: 240px;
-    }
-
-    .hero-content {
-        padding: 24px 20px 16px;
-        max-width: 100%;
-    }
-
-    .hero h1,
-    .hero-content h1 {
-        font-size: 1.85rem;
-    }
-
-    /* Stack mission card cleanly on mobile */
-    .hero-article,
-    .hero article {
-        position: static;
-        max-width: 100%;
-        margin: 0 16px 20px;
-        box-shadow: var(--shadow-subtle);
-        background: var(--card-bg);
-    }
-
-    .history-section {
-        padding: 24px 20px;
-        border-radius: var(--radius-md);
-    }
-
-    .values-strip {
-        grid-template-columns: 1fr 1fr;
-        padding: 24px 16px;
         gap: 16px;
     }
 
-    .value-num {
-        font-size: 1.75rem;
+    .history-grid img {
+        max-width: 440px;
+        margin: 0 auto;
     }
 
-    .adventure-grid {
+    .adventure-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .adventure-gallery figure:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        justify-self: center;
+    }
+
+    .hero > img {
+        height: 280px;
+    }
+
+    .hero article {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid var(--accent1-color);
+        background-color: var(--surface-color);
+    }
+}
+
+/* Mobile Breakpoint (480px and below) */
+@media (max-width: 480px) {
+    header {
         grid-template-columns: 1fr;
-        gap: 20px;
+        justify-items: center;
+        text-align: center;
+        gap: 12px;
     }
 
-    .card-img-wrap {
-        height: 200px;
+    header nav {
+        justify-content: center;
+        gap: 8px 12px;
     }
 
-    .cta-box {
-        padding: 32px 20px;
+    .hero h1 {
+        font-size: 1.4rem;
+        top: 12px;
+        left: 12px;
+        padding: 6px 12px;
     }
 
-    .cta-actions {
-        flex-direction: column;
-        width: 100%;
+    .adventure-gallery {
+        grid-template-columns: 1fr;
     }
 
-    .btn {
-        width: 100%;
+    .adventure-gallery figure:last-child {
+        max-width: 100%;
+        justify-self: stretch;
     }
 
-    .footer-inner {
+    footer {
         flex-direction: column;
         text-align: center;
-        gap: 20px;
-    }
-
-    .footer-brand {
-        align-items: center;
+        gap: 12px;
     }
 }
 
 /* --------------------------------------------------------------------------
-   13. ACCESSIBILITY: REDUCED MOTION PREFERENCE
+   13. ACCESSIBILITY & KEYBOARD FOCUS STATES
    -------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
+.skip-link {
+    position: absolute;
+    left: 8px;
+    top: -60px;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 100;
+    transition: top 0.2s ease-in-out;
+}
+
+.skip-link:focus {
+    top: 8px;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--accent2-color);
+    outline-offset: 3px;
 }
